@@ -6,19 +6,15 @@
 #include<bits/stdc++.h>
 using namespace std;
 int maxProfit(vector<int>& prices){
-    int totalProfit=0;
-    int n=prices.size();
-    for(int i=0;i<prices.size();i++){
-        int profit=0;
-        int j=i;
-        while(j+1<=n-1 && prices[j+1]>=prices[j]){
-            j++;
-        }
-        profit=prices[j]-prices[i];
-        if(profit>0)totalProfit+=profit;
-        i=j;
+    int maxProfit=INT_MIN;
+    int len=prices.size();
+    int minTillNow=INT_MAX;
+    for(int i=0;i<len;i++){
+        if(prices[i]<minTillNow)minTillNow=prices[i];
+        int profit=prices[i]-minTillNow;
+        maxProfit=max(profit, maxProfit);
     }
-    return totalProfit;
+    return maxProfit;
 }
 int main()
 {
