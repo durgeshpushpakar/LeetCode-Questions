@@ -11,6 +11,7 @@ vector<int> preorderTraversal(TreeNode* root) {
     ans.insert(ans.end(), right.begin(), right.end());
     return ans;
 }
+/*
 vector<vector<int>> levelOrder(TreeNode* root) {
     vector<vector<int>>ans;
     if(root==NULL)return ans;
@@ -43,8 +44,30 @@ vector<vector<int>> levelOrder(TreeNode* root) {
     }    
     return ans;    
 }
+*/
+vector<vector<int>> levelOrder(TreeNode* root) {
+    vector<vector<int>>ans;
+    if(root==NULL){
+        return ans;
+    }
+    queue<TreeNode*>pending;
+    pending.push(root);
+    while(!pending.empty()){
+        vector<int>temp;
+        int size=pending.size();
+        for(int i=0;i<size;i++){
+            TreeNode*front=pending.front();
+            pending.pop();
+            temp.push_back(front->val);
+            if(front->left)pending.push(front->left);
+            if(front->right)pending.push(front->right);
+        }
+        ans.push_back(temp);
+    }
+    return ans;
+}
 int main()
 {
-
+    
     return 0;
 }
