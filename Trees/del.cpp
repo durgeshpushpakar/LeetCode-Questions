@@ -4,10 +4,20 @@ using namespace std;
 int kadaneAlgo(int *arr, int n){
     int maxSum=0;
     int maxTillNow=0;
+    int start=0;
+    int _start=0;
+    int end=0;
     for(int i=0;i<n;i++){
         maxTillNow+=arr[i];
-        maxSum=max(maxSum, maxTillNow);
-        if(maxTillNow<0)maxTillNow=0;
+        if(maxTillNow>=maxSum){
+            maxSum=maxTillNow;
+            end=i;
+            start=_start;
+        }
+        if(maxTillNow<0){
+            maxTillNow=0;
+            _start=i+1;
+        }
     }
     return maxSum;
 }
