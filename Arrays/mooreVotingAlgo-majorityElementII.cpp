@@ -19,6 +19,15 @@ vector<int> majorityElement(vector<int>& nums) {
             c2--;
         }
     }
+    c1=0;c2=0;
+    for(int i=0;i<nums.size();i++){
+        if(nums[i]==num1)c1++;
+        else if(nums[i]==num2)c2++;
+    }
+    vector<int>ans;
+    if(c1>nums.size()/3)ans.push_back(num1);
+    if(c2>nums.size()/3)ans.push_back(num2);
+    return ans;
 }
 int main()
 {
