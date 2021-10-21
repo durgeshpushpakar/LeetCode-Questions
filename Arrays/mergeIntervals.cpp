@@ -2,7 +2,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 bool comparator(const vector<int>&v1, vector<int>&v2){
-    return v1[0]<v2[0];
+    return v1[1]>v2[1];
 }
 vector<vector<int>> merge(vector<vector<int>>& arr) {
     vector<vector<int>>ans;
@@ -23,6 +23,15 @@ vector<vector<int>> merge(vector<vector<int>>& arr) {
 }
 int main()
 {
-
+    vector<vector<int>>arr {{3, 5, 1},
+                            {4, 8, 6},
+                            {7, 2, 9}};
+    sort(arr.begin(), arr.end(), comparator);
+    for(int i=0;i<3;i++){
+        for(int j=0;j<3;j++){
+            cout<<arr[i][j]<<" ";
+        }
+        cout<<endl;
+    }
     return 0;
 }
