@@ -8,7 +8,8 @@ bool searchMatrix(vector<vector<int>>& matrix, int target) {
         if(matrix[i][j]==target)return true;
         if(target>matrix[i][j])i++;
         else if(target<matrix[i][j])j--;
-    }        
+    }     
+    return false;   
 }
 int main()
 {
