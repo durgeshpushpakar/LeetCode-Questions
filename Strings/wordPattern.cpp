@@ -13,7 +13,7 @@ bool wordPattern(string pattern, string s) {
         if(umap.count(word)==1 && umap[word]!=pattern[wordCount]){
             return false;
         }
-        else if(umap2.count(pattern[wordCount])==1)return false;
+        else if(umap2.count(pattern[wordCount])==1 && umap.count(word)==0)return false;
         umap.insert(make_pair(word, pattern[wordCount]));
         umap2.insert(pattern[wordCount]);
         wordCount++;
