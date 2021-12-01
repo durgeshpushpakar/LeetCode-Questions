@@ -14,8 +14,7 @@ bool hasPath(int **edges, int n, int v1, int v2){
             DFS(edges, n, i, visited);
             if(!visited[v1] && !visited[v2])continue;
             if(visited[v1]&&visited[v2])return true;
-            else return false;;
-
+            else return false;
         }
     }
     return false;

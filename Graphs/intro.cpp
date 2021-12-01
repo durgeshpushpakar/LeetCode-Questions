@@ -10,7 +10,7 @@ void singleComponentBFS(int **edges, int n, int sv, bool *visited){
         q.pop();
         cout<<front<<" ";
         for(int i=0;i<n;i++){
-            if(!visited[i] && edges[front][i]){
+            if(!visited[i] && edges[front][i]==1){
                 q.push(i);
                 visited[i]=true;
             }
