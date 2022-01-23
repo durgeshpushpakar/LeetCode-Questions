@@ -3,3 +3,5 @@ Stacks and Queue/.vscode
 Strings/.vscode
 *.exe
 Workspace.code-workspace
+delete.cpp
+delete*.cpp
