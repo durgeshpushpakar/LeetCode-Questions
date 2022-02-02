@@ -4,4 +4,5 @@ Strings/.vscode
 *.exe
 Workspace.code-workspace
 delete.cpp
-delete*.cpp
+del.cpp
+*.exe
