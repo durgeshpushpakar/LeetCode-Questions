@@ -1,8 +1,10 @@
 #include<bits/stdc++.h>
 #include "listnode.h"
 using namespace std;
+/*
 class Solution {
 public:
+
     ListNode *mergeLL(ListNode *head1, ListNode *head2){
         ListNode *h, *t;
         if(head1==NULL)return head2;
@@ -40,6 +42,37 @@ public:
         }
         return head;
     }
+    
+};
+*/
+class myCompare{
+    public:
+    bool operator()(ListNode *a, ListNode*b){
+        return a->val>b->val;
+    }
+};
+class Solution {
+public:
+ListNode* mergeKLists(vector<ListNode*>& lists) {
+    priority_queue<ListNode*, vector<ListNode*>, myCompare>minHeap;
+    ListNode *head=new ListNode(0);
+    ListNode *tail=head;
+    for(int i=0;i<lists.size();i++){
+        if(lists[i]!=NULL)
+            minHeap.push(lists[i]);
+    }
+    while(!minHeap.empty()){
+        ListNode *top=minHeap.top();
+        minHeap.pop();
+        ListNode *newNode=new ListNode(top->val);
+        tail->next=newNode;
+        tail=tail->next;
+        if(top->next!=NULL){
+            minHeap.push(top->next);
+        }
+    }
+    return head->next;
+}
 };
 int main()
 {
