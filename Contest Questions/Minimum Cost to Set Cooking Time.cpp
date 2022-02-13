@@ -4,11 +4,25 @@
 using namespace std;
 class Solution {
 public:
-int costCalc(vector<int>&digits ,int startAt, int moveCost, int pushCost){
-
+int calcCost(int min, int sec, int startAt, int moveCost, int pushCost){
+    int ans=0;
+    if(min!=0){
+        if(min<10){
+            if(startAt==min)ans+=pushCost;
+            else ans+=moveCost+pushCost;
+        }
+        else{
+            string temp=to_string(min);
+            ans+= 2*(moveCost+pushCost);
+            if(atoi(temp[0]==startAt))ans-=moveCost;
+        }
+    }
+    if(sec!=0){
+        if(sec!=)
+    }
 }
-int minCostSetTime(int startAt, int moveCost, int pushCost, int targetSec) {
-       
+int minCostSetTime(int startAt, int moveCost, int pushCost, int targetSeconds) {
+    if(targetSeconds==6039)return calcCost(99, 99, startAt, moveCost, pushCost);   
 }
 };
 int main()
