@@ -3,24 +3,27 @@
 using namespace std;
 class Solution {
 public:
-vector<int> findOriginalArray(vector<int>& changed) {
+vector<int> findOriginalArray(vector<int>& arr) {
+    vector<int>map(100001, 0);
     vector<int>ans;
-    vector<int>freq(100001, 0);
-    for(int i=0;i<changed.size();i++)freq[changed[i]]++;
-    if(freq[0]%2!=0)return ans;
-    else if(freq[0]!=0 && freq[0]%2==0){
-        ans.insert(ans.end(), freq[0]/2, 0);
+    int n=arr.size();
+    for(int i=0;i<n;i++){
+        map[arr[i]]++;
+    }   
+    if(map[0]%2==1)return ans;
+    else if(map[0]!=0){
+        ans.insert(ans.end(), map[0]/2, 0);
     }
-    for(int i=1;i<freq.size();i++){
-        if(freq[i]<=0)continue;
-        if(2*i<100001&&freq[i]<=freq[2*i]){
-            ans.insert(ans.end(), freq[i], i);
-            freq[2*i]-=freq[i];
-            freq[i]=0;
+    for(int i=1;i<map.size();i++){
+        if(map[i]==0)continue;
+        int temp=i*2;
+        if(map[temp]>=map[i]){
+            ans.insert(ans.end(), map[i], i);
+            map[temp]-=map[i];
+            map[i]=0;
         }
         else{
-            ans.clear();
-            return ans;
+            return {};
         }
     }
     return ans;
