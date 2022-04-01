@@ -1,46 +1,44 @@
 #include<bits/stdc++.h>
 using namespace std;
 vector<int>*BFS(vector<vector<int>>&edges, int start, int end){
+    int n=edges.size();
+    vector<bool> visited(n, false);
     vector<int>*ans=new vector<int>;
     if(start==end){
         ans->push_back(start);
         return ans;
     }
-
-    int n=edges.size();
     unordered_map<int, int>parent;
-    parent[start] = -1;
-    vector<bool>visited(n, false);
+    parent[start]=-1;
+    visited[start]=true;
+    // memset(visited, false, sizeof visited);
+    
     queue<int>q;
     q.push(start);
-    visited[start]=true;
     while(!q.empty()){
-        int vertex=q.front();
-        q.pop();
-        for(int i=0;i<n;i++){
-            if(!visited[i] && edges[i][vertex]){
-                parent[i] = vertex;
-                visited[i] = true;
-                q.push(i);
-                if(i==end){
-                    int temp=i;
-                    while(temp!=-1){
-                        ans->push_back(temp);
-                        temp=parent[temp];
-                        return ans;
-                    }
+        int size=q.size();
+        while(size--){
+            int front=q.front();
+            q.pop();
+            for(int i=0;i<n;i++){
+                if(!visited[i] && edges[front][i]){
+                    parent[i]=front;
+                    visited[i]=true;
+                    q.push(i);
+                    if(i==end){
+                       int temp=end;
+                       while(temp!=-1){
+                           ans->push_back(temp);
+                           temp=parent[temp];
+                       }
+                       return ans;
+                    }                    
                 }
             }
         }
     }
-    return ans;
+    return NULL;
 }
-
-
-
-
-
-
 
 
 

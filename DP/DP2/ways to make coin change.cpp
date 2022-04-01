@@ -44,8 +44,7 @@ int countWaysToMakeChange_DP(int deno[], int n, int value){
     }
     return arr[n][value];
 }
-
-int main()
+ 
 {
     int deno[3]={1,2,3};
     cout<<countWaysToMakeChange(deno, 3, 4);
