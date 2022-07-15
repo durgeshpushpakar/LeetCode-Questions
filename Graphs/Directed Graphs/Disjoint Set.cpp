@@ -32,3 +32,40 @@ void Union(int u, int v){
     }
 }
 };
+/********************/
+/*vector implementation*/
+class disjointSet{
+    vector<int>parent, rank;
+    int count;
+  public:
+    disjointSet(int n):parent(n), rank(n){
+        for(int i=0;i<n;i++){
+            parent[i]=i;
+            rank[i]=0;
+        }
+        count=n;
+    }
+    int findParent(int i){
+        if(parent[i]==i)return i;
+        else return parent[i]=findParent(parent[i]);
+    }
+    void unionn(int u, int v){
+        u=findParent(u);
+        v=findParent(v);
+        if(u==v)return;
+        if(rank[u]>rank[v]){
+            parent[v]=u;
+        }
+        else if(rank[u]<rank[v]){
+            parent[u]=v;
+        }
+        else{
+            parent[u]=v;
+            rank[v]++;
+        }
+        count--;
+    }
+    int getCount(){
+        return count;
+    }
+};

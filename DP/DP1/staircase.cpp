@@ -24,10 +24,6 @@ long helper(int n, long *arr){
 long staircase(int n){
     long *arr= new long[n+1];
     memset(arr, -1, sizeof(arr));
-    arr[0]=1;
-    arr[1]=1;
-    arr[2]=2;
-    arr[3]=4;
     long ans=helper(n, arr);
     delete [] arr;
     return ans;

@@ -23,6 +23,20 @@ int helper(BinaryTreeNode<int>* root, int sum){
 void replaceWithLargerNodesSum(BinaryTreeNode<int> *root) {
     int x=helper(root, 0);
 }
+/*
+VOID solution
+void helper(BinaryTreeNode<int>* root, int &sum){
+    if(root==NULL)return;
+    helper(root->right, sum);
+    sum+=root->data;
+    root->data=sum;
+    helper(root->left, sum);
+}
+void replaceWithLargerNodesSum(BinaryTreeNode<int> *root) {
+    int sum=0;
+     helper(root, sum);
+}
+*/
 int main()
 {
 

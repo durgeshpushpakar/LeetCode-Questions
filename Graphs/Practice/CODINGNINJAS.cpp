@@ -19,7 +19,8 @@ bool DFS(vector<vector<char>> &board, int n, int m, int r, int c, vector<vector<
     return false;
 }
 bool hasPath(vector<vector<char>> &board, int n, int m) {
-    string s="CODINGNINJA";
+    string s="CODINGNINJA"; 
+    //                       rows         every row with a vector of size m initialized with false    
     vector<vector<bool>>visited(n, vector<bool>(m, false));
     for(int i=0;i<n;i++){
         for(int j=0;j<m;j++){
