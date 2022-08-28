@@ -2,6 +2,7 @@
 using namespace std;
 int n;
 vector<int>arr(n);vector<int>tree(4*n);
+// query helper
 int helper(int low, int high, int ind, int l, int r){
     if(low>=l && high<=r)return tree[ind];
     else if(l>high || r<low){
@@ -20,7 +21,7 @@ void buildTree(int low, int high, int ind){
     buildTree(low, mid, (2*ind)+1);
     buildTree(mid+1, high, (2*ind)+2);
     // segment tree for the maximum in a range
-    seg[ind]=max(tree[2*ind+1], tree[2*idx+2]);
+    tree[ind]=max(tree[2*ind+1], tree[2*idx+2]);
 }
 void updateHelper(int idx, int low, int high, int index, int value){
     if(low==high){
